@@ -32,42 +32,94 @@
 // }
 
 //fetchWeather();
-const getWeather = (city) => {
+// const getWeather = (city) => {
 
-document.getElementById('cityName').innerHTML = city
-const apiUrl = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city= ' + city   ;
+// document.getElementsByClassName('cityName').innerHTML = city;
+// const apiUrl = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city ;
 
-fetch(apiUrl, {
-  headers: {
-    'X-RapidAPI-Key': '556abe7f4bmsh69a8dca590272a3p19d3e9jsnfb6d9566d17c',
-             'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-  }
-})
-.then(response => response.json())
-.then(data => {
-  // Set the innerHTML of the HTML elements with the corresponding IDs
-  document.getElementById('temp').innerHTML = data.temp;
-  document.getElementById('temp2').innerHTML = data.temp1;
-  document.getElementById('min_temp').innerHTML = data.min_temp;
-  document.getElementById('max_temp').innerHTML = data.max_temp;
-  document.getElementById('wind_Deg').innerHTML = data.wind_Deg;
-  document.getElementById('sunrise').innerHTML = data.sunrise;
-  document.getElementById('sunset').innerHTML = data.sunset;
-  document.getElementById('feels_like').innerHTML = data.feels_like;
-  document.getElementById('humidity').innerHTML = data.humidity;
-  document.getElementById('humidity2').innerHTML = data.humidity;
-  document.getElementById('wind_speed').innerHTML = data.wind_speed;
-  document.getElementById('wind_speed2').innerHTML = data.wind_speed;
+// fetch(apiUrl, {
+//   headers: {
+//     'X-RapidAPI-Key': '556abe7f4bmsh69a8dca590272a3p19d3e9jsnfb6d9566d17c',
+//              'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+//   }
+// })
+// .then(response => response.json())
+// .then(data => {
+//   // Set the innerHTML of the HTML elements with the corresponding IDs
+//   document.getElementById('temp').innerHTML = data.temp;
+//   document.getElementById('temp2').innerHTML = data.temp1;
+//   document.getElementById('min_temp').innerHTML = data.min_temp;
+//   document.getElementById('max_temp').innerHTML = data.max_temp;
+//   document.getElementById('wind_Deg').innerHTML = data.wind_Deg;
+//   document.getElementById('sunrise').innerHTML = data.sunrise;
+//   document.getElementById('sunset').innerHTML = data.sunset;
+//   document.getElementById('feels_like').innerHTML = data.feels_like;
+//   document.getElementById('humidity').innerHTML = data.humidity;
+//   document.getElementById('humidity2').innerHTML = data.humidity;
+//   document.getElementById('wind_speed').innerHTML = data.wind_speed;
+//   document.getElementById('wind_speed2').innerHTML = data.wind_speed;
   
   
 
     
-})
-.catch(error => console.error(error));
-}
+// })
+// .catch(error => console.error(error));
+// }
+// const submit=document.getElementsByClassName("submit");
+// submit.addEventListener( "click" , (e) => {
+//     e.preventDefault()
+//     getWeather(city.value)
+// })
+// getWeather( Delhi ) 
 
-submit.addEventListener( "click" , (e) => {
-    e.perventDefault()
-    getWeather(city.value)
-})
-getWeather( Delhi ) 
+const getWeather = (city) => {
+    // Set the value of the cityName input to the city
+    document.getElementsByClassName('cityName').value = city;
+    
+  
+    const apiUrl = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city;
+  
+    fetch(apiUrl, {
+      headers: {
+        'X-RapidAPI-Key': '556abe7f4bmsh69a8dca590272a3p19d3e9jsnfb6d9566d17c',
+        'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Set the innerHTML of the HTML elements with the corresponding IDs
+      document.getElementById('temp').innerHTML = data.temp;
+      document.getElementById('temp2').innerHTML = data.temp1;
+      document.getElementById('min_temp').innerHTML = data.min_temp;
+      document.getElementById('max_temp').innerHTML = data.max_temp;
+      document.getElementById('wind_Deg').innerHTML = data.wind_Deg;
+      document.getElementById('sunrise').innerHTML = data.sunrise;
+      document.getElementById('sunset').innerHTML = data.sunset;
+      document.getElementById('feels_like').innerHTML = data.feels_like;
+      document.getElementById('humidity').innerHTML = data.humidity;
+      document.getElementById('humidity2').innerHTML = data.humidity;
+      document.getElementById('wind_speed').innerHTML = data.wind_speed;
+      document.getElementById('wind_speed2').innerHTML = data.wind_speed;
+      document.getElementById('cityName').innerHTML = city; 
+    })
+    .catch(error => console.error(error));
+  }
+  
+  // Set the default city to 'Delhi'
+  let defaultCity = 'Delhi';
+  
+  // Call getWeather with the default city
+  getWeather(defaultCity);
+  
+  // Add an event listener to the form submit button
+  document.querySelector('#sub').addEventListener('click', (event) => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+  
+    // Get the value of the cityName input
+    let city = document.querySelector('.cityName').value;
+  
+    // Call getWeather with the city name
+    getWeather(city);
+  });
+  

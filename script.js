@@ -10,7 +10,7 @@ fetch(apiUrl, {
 .then(data => {
   // Set the innerHTML of the HTML elements with the corresponding IDs
   document.getElementById('temp').innerHTML = data.temp;
-  document.getElementById('temp2').innerHTML = data.temp;
+  document.getElementById('temp2').innerHTML = data.tempadd;
   document.getElementById('min_temp').innerHTML = data.min_temp;
   document.getElementById('max_temp').innerHTML = data.max_temp;
   document.getElementById('wind_Deg').innerHTML = data.wind_Deg;
